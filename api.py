@@ -5,11 +5,10 @@ from flask_cors import CORS
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///allaccess.db'
 CORS(app)
-const allowCors = fn =&gt; async (req, res) =&gt; {
+
+const allowCors = fn => async (req, res) => {
   res.setHeader('Access-Control-Allow-Credentials', true)
   res.setHeader('Access-Control-Allow-Origin', '*')
-  // another common pattern
-  // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
   res.setHeader(
     'Access-Control-Allow-Headers',
@@ -21,12 +20,6 @@ const allowCors = fn =&gt; async (req, res) =&gt; {
   }
   return await fn(req, res)
 }
-
-const handler = (req, res) =&gt; {
-  const d = new Date()
-  res.end(d.toString())
-}
-
 module.exports = allowCors(handler)
 
 db = SQLAlchemy(app)
