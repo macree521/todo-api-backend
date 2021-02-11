@@ -7,7 +7,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///allaccess.db'
 CORS(app)
 cors = CORS(app, resources = {
     r"/*": {
-        "origins": "*"
+        "Access-Control-Allow-Headers": "*"
     }
 })
 db = SQLAlchemy(app)
