@@ -5,11 +5,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///allaccess.db'
 CORS(app)
-cors = CORS(app, resources = {
-    r"/*": {
-        "Access-Control-Allow-Headers": "*"
-    }
-})
+
 db = SQLAlchemy(app)
 
 class ToDo(db.Model):
