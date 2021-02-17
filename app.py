@@ -2,10 +2,11 @@ from flask import Flask, jsonify, request, json
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///allaccess.db'
-CORS(app)
+from settings import DATABASE_URL
 
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
+CORS(app)
 
 db = SQLAlchemy(app)
 
